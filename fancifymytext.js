@@ -18,7 +18,7 @@ function bigger(){
   function fancy(){
     document.getElementById("freeform").style.fontWeight = "bold";
     document.getElementById("freeform").style.color = "yellow";
-    document.getElementById("freeform").style.textDecoration = "italic"
+    document.getElementById("freeform").style.textDecoration = "underline"
   }
   
   function boring(){
