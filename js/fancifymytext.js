@@ -1,31 +1,31 @@
-function makeTextBigger() {
-  alert("Hello, world!");
-  document.getElementById("textInput").style.fontSize = "24pt";
-}
-  
-function makeTextBoring() {
-   if (document.getElementById("boring").checked == true) {    
-       document.getElementById("textInput").style.fontSize = "10pt";
-       document.getElementById("textInput").style.color = "black";
-       document.getElementById("textInput").style.textDecoration = "none";
-       document.getElementById("boring").checked = false;
-   }
-}
 
-function makeTextFancy() {
-   if (document.getElementById("fancy").checked == true) {
-       document.getElementById("textInput").style.color = "blue";
-       document.getElementById("textInput").style.textDecoration = "underline";
-       document.getElementById("fancy").checked = false;
-   }
+function biggerFunction(){
+	document.getElementById("mainTextArea").style.fontSize = "larger";
 }
-
-function moo() {
-   var mooElem = document.getElementById("textInput");
-   mooElem.value = mooElem.value.toUpperCase();
-   var parts = mooElem.value.split(".");
-   for (var i = 0; i< parts.length; i++){
-       parts[i] = parts[i] + "Moo";
-   }
-   mooElem.value = parts.join(".");
+function deselectFunction(){
+	alert("You have deselected my button!");
+}
+function fancifyFunction(){
+	const textBox = document.getElementById("mainTextArea");
+	textBox.style.fontWeight = "bold";
+	textBox.style.color = "blue";
+	textBox.style.textDecoration = "underline";
+	//document.getElementById("BoringBetty").checked = "false";
+}
+function plainFunction(){
+	const textBox = document.getElementById("mainTextArea");
+	//textBox.style.fontStyle = "normal";
+	textBox.style.fontWeight = "normal";
+	textBox.style.color = "black";
+	textBox.style.textDecoration = "initial";
+	//document.getElementById("FancyShmancy").checked = "false";
+}
+function mooFunction(){
+	const textBox = document.getElementById("mainTextArea");
+	textBox.style.textTransform = "uppercase";
+	var str = textBox.value;
+	console.log(str);
+	var parts = str.split(".");
+	str = parts.join(". -Moo ");
+	textBox.value = str;
 }
