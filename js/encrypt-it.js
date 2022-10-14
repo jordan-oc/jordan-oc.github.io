@@ -11,19 +11,11 @@
    */
   window.addEventListener("load", init);
 
-  /**
-   * TODO: Write a function comment using JSDoc.
-   */
   function init() {
-    // Note: In this function, we usually want to set up our event handlers
-    // for UI elements on the page.
     const encryptIt = document.getElementById('encrypt-it')
     encryptIt.addEventListener("click", click, false);
   }
 
-  // Add any other functions in this area (you should not implement your
-  // entire program in the init function, for similar reasons that
-  // you shouldn't write an entire Java program in the main method).
   function click() {
     console.log("Button clicked!");
     const inputText = document.getElementById('input-text');
