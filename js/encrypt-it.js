@@ -3,6 +3,7 @@
  */
 (function() {
   "use strict";
+    
 
   /**
    * The starting point in our program, setting up a listener
@@ -11,37 +12,96 @@
    */
   window.addEventListener("load", init);
 
+  /**
+   * TODO: Write a function comment using JSDoc.
+   */
   function init() {
-    const encryptIt = document.getElementById('encrypt-it')
-    encryptIt.addEventListener("click", click, false);
+    // Note: In this function, we usually want to set up our event handlers
+    // for UI elements on the page.
+    const btn = document.getElementById("encrypt-it");
+    btn.addEventListener('click', handleClick);
+
+    const btn2 = document.getElementById("reset");
+    btn2.addEventListener('click', handleReset);
+
   }
 
-  function click() {
+  // Add any other functions in this area (you should not implement your
+  // entire program in the init function, for similar reasons that
+  // you shouldn't write an entire Java program in the main method).
+  function handleClick() {
     console.log("Button clicked!");
-    const inputText = document.getElementById('input-text');
-    const resultArea = document.getElementById('result');
-    resultArea.textContent = shiftCipher(inputText.value);
+    
+    let txt = document.getElementById("input-text").value;
+    let cipheredText = cipherify(txt);
+    let finalText = setCaps(cipheredText);
+    setSize();
+
+    document.getElementById("result").innerHTML = finalText;
+  }
+
+  function handleReset() {
+    console.log("Resetting...");
+
+  }
+
+  function cipherify(text){
+    text = text.toLowerCase();
+
+    var cipherType = document.getElementById("cipher-type").value;
+    let result = "";
+    
+    if (cipherType == "shift")
+      result = shiftCipher(text);
+    else if (cipherType == "random")
+      result = "View source for pseudocode randomizing \'" + randomCipher(text) + "\'";
+    
+    return result;
   }
 
   function shiftCipher(text) {
-    text = text.toLowerCase();
-    const upgrade = 5;
-    let result = '';
-    for (let i = 0; i <text.length; i++) {
-      if (text.charCodeAt(i) >= 97 && text.charCodeAt(i) <= 122) {
-        if (text[i] == 'y') {
-          result += String.fromCharCode(97);
-        }else if (text[i] == 'z') {
-          result += String.fromCharCode(98);
-        } else {
-          result += String.fromCharCode(text.charCodeAt(i) + upgrade);
-  
-        }
-      } else {
+    let result = "";
+    for (let i = 0; i < text.length; i++) {
+      if (text[i] < 'a' || text[i] > 'z') {
         result += text[i];
+      } else if (text[i] == 'z') {
+        result += 'a';
+      } else { // letter is between 'a' and 'y'
+        let letter = text.charCodeAt(i);
+        let resultLetter = String.fromCharCode(letter + 1);
+        result += resultLetter;
       }
-      
     }
     return result;
   }
+
+  function randomCipher(text) {
+    let result = text;
+    return result;
+  }
+
+  function setSize() {
+    const rbs = document.querySelectorAll('input[name="text-size"]');
+    for (let rb of rbs) {
+      if (rb.checked) {
+        let selected = rb.value;
+
+        if (selected == "12pt") {
+          document.getElementById("result").style.fontSize = "12pt";
+        } else if (selected == "24pt") {
+          document.getElementById("result").style.fontSize = "24pt";
+        }
+      }
+    }    
+  }
+
+  function setCaps(text) {
+    var capsBox = document.getElementById("all-caps");
+
+    if (capsBox.checked)
+      text = text.toUpperCase();
+    
+    return text;
+  }
+
 })();
