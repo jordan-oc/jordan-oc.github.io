@@ -1,31 +1,34 @@
 
-function biggerFunction(){
-	document.getElementById("mainTextArea").style.fontSize = "larger";
-}
-function deselectFunction(){
-	alert("You have deselected my button!");
-}
-function fancifyFunction(){
-	const textBox = document.getElementById("mainTextArea");
-	textBox.style.fontWeight = "bold";
-	textBox.style.color = "blue";
-	textBox.style.textDecoration = "underline";
-	//document.getElementById("BoringBetty").checked = "false";
-}
-function plainFunction(){
-	const textBox = document.getElementById("mainTextArea");
-	//textBox.style.fontStyle = "normal";
-	textBox.style.fontWeight = "normal";
-	textBox.style.color = "black";
-	textBox.style.textDecoration = "initial";
-	//document.getElementById("FancyShmancy").checked = "false";
-}
-function mooFunction(){
-	const textBox = document.getElementById("mainTextArea");
-	textBox.style.textTransform = "uppercase";
-	var str = textBox.value;
-	console.log(str);
-	var parts = str.split(".");
-	str = parts.join(". -Moo ");
-	textBox.value = str;
-}
+function bigger() {
+	var textarea = document.getElementById("textarea");
+	textarea.style.fontSize = "24pt";
+	hello();
+  }
+  
+  function fancy() {
+	var clicked = document.getElementById("fancy");
+	var textarea = document.getElementById("textarea");
+	if (clicked.checked) {
+	  hello();
+	  textarea.style.fontWeight = "bold";
+	  textarea.style.color = "blue";
+	  textarea.style.textDecoration = "underline";
+	} else {
+	  hello();
+	  textarea.style.fontWeight = "normal";
+	  textarea.style.color = "black";
+	  textarea.style.textDecoration = "none";
+	}
+  }
+  
+  function hello() {
+	alert("Hello, World!");
+  }
+  
+  function moo() {
+	var textarea = document.getElementById("textarea");
+	textarea.style.textTransform = "uppercase";
+	var period = textarea.value.split(".");
+	textarea.value = period.join("-Moo");
+	hello();
+  }
