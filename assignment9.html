@@ -16,3 +16,23 @@
 				<li><a href="assignment9.html">Cookies</a></li>
 			</ul>
 		</nav>
+        <html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.1.3/js.cookie.js"></script>
+<body>
+    <input id="name" type="text" class="name" placeholder="What's your name?"/>
+
+    <script>
+        $(document).ready(function(){
+            var name = Cookies.get('_username');
+            if (name) {
+                $('#name').val(name);
+            }
+            $('#name').keydown(function(){
+                var inputName = $('#name').val();
+                Cookies.set('_username', inputName);
+            })
+        });
+    </script>
+</body>
+</html>
